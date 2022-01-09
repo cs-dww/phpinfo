@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  phpinfo:
+    command: -f index.php -S 0.0.0.0:8080
+    image: phpinfo:test
+    deploy:
+      replicas: 2
+    entrypoint: php
+    ports:
+      - "8080"
+    placement:
+      constraints:
+        - "node.role==worker"
+    volumes:
+      - ./src/index.php:/src/index.php:ro
+    working_dir: /src/
