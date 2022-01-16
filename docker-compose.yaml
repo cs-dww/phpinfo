@@ -11,7 +11,7 @@ services:
       replicas: 2
     entrypoint: php
     ports:
-      - "8080"
+      - "30000:8080"
     volumes:
       - ./src/index.php:/src/index.php:ro
     working_dir: /src/
