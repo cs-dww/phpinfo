@@ -18,7 +18,7 @@ services:
           - "node.role==worker"
       replicas: 2
     entrypoint: php
-    image: phpinfo:2022-01
+    image: 172.31.38.143:5000/phpinfo:2022-01
     ports:
       - "30000:8080"
     working_dir: /src/

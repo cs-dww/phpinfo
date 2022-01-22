@@ -3,7 +3,7 @@ version: "3.8"
 services:
   phpinfo:
     command: -f index.php -S 0.0.0.0:8080
-    image: phpinfo:test
+    image: 172.31.38.143:5000/phpinfo:test
     deploy:
       placement:
         constraints:
