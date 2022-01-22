@@ -18,28 +18,41 @@ spec:
     spec:
       containers:
       - 
-        args: 
-        - -f 
-        - index.php 
-        - -S 
+        args:
+        - -f
+        - index.php
+        - -S
         - 0.0.0.0:8080
-        command: 
+        command:
         - php
         image: phpinfo:2022-01
         name: phpinfo-container
         ports:
         - containerPort: 8080
-        volumeMounts: 
+        volumeMounts:
         - 
-          mountPath: /src/index.php
+          mountPath: /src/
           name: phpinfo-volume
           readOnly: true
-          subPath: index.php
         workingDir: /src/
       volumes:
       - 
         hostPath: 
-          path: ./src/index.php
-          type: File
+          path: /home/runner/work/phpinfo/phpinfo/src/
+          type: Directory
         name: phpinfo-volume
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpinfo
+spec:
+  ports:
+  - 
+    nodePort: 30000
+    port: 80
+    targetPort: 8080
+  selector:
+    app: phpinfo
+  type: NodePort
 ---
