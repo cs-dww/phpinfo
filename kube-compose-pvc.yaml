@@ -47,12 +47,12 @@ spec:
         - 
           mountPath: /src/
           name: phpinfo-volume
-          readOnly: true
+          readOnly: false
         workingDir: /src/
       volumes:
       - 
         name: phpinfo-volume
         persistentVolumeClaim:
           claimName: phpinfo-pvc
-          readOnly: true
+          readOnly: false
 ---
